@@ -1,0 +1,299 @@
+/* Styles for the animated effects in this folder. */
+
+/* ── Hero circuit grid ──────────────────────────── */
+.circuit-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, #000 35%, transparent 85%);
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, #000 35%, transparent 85%);
+}
+
+/* ── Custom cursor ──────────────────────────────── */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--accent-rgb), 0.7);
+  pointer-events: none;
+  opacity: 0;
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease),
+    border-color 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.cursor-ring.is-visible {
+  opacity: 1;
+}
+.cursor-ring.is-hover {
+  width: 58px;
+  height: 58px;
+  background: rgba(var(--accent-rgb), 0.08);
+  border-color: rgba(var(--accent-rgb), 0.35);
+}
+.cursor-ring.is-down {
+  width: 20px;
+  height: 20px;
+}
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.06), transparent 60%);
+}
+
+/* ── Scramble text ──────────────────────────────── */
+.scramble {
+  white-space: nowrap;
+}
+.scramble-glyph {
+  color: var(--text-dim);
+  -webkit-text-fill-color: var(--text-dim);
+}
+.scramble-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.85em;
+  margin-left: 0.08em;
+  vertical-align: -0.05em;
+  background: var(--accent);
+  animation: caret-blink 1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── Masked line reveal ─────────────────────────── */
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.mask-line-inner {
+  display: block;
+}
+
+/* ── Magnetic & tilt ────────────────────────────── */
+.magnetic {
+  display: inline-block;
+}
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  background: radial-gradient(500px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.07), transparent 40%);
+}
+.tilt-card:hover::after {
+  opacity: 1;
+}
+
+/* ── Marquee ────────────────────────────────────── */
+.marquee {
+  --gap: clamp(40px, 6vw, 88px);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--duration) linear infinite;
+}
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding-right: var(--gap);
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Scroll-linked words ────────────────────────── */
+.scroll-words {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.6vw, 3.9rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+.scroll-word {
+  margin-right: 0.25em;
+}
+
+/* ── Scroll progress bar ────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+/* ── Logo & avatar ──────────────────────────────── */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-word {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.avatar-initials {
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--on-accent);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+/* ── Project cover art ──────────────────────────── */
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 6px);
+  background: var(--bg-elev);
+}
+.cover img,
+.cover svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.cover-generated svg {
+  background: radial-gradient(circle at var(--gx) var(--gy), rgba(var(--accent-rgb), 0.16), transparent 55%),
+    radial-gradient(circle at 10% 100%, rgba(var(--accent-2-rgb), 0.14), transparent 50%), var(--bg-elev);
+}
+.trace {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1.5;
+}
+.trace-live {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-dasharray: 14 86;
+  animation: trace-signal 3s linear infinite;
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 3px rgba(var(--accent-rgb), 0.9));
+}
+@keyframes trace-signal {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.pad {
+  fill: var(--bg-elev);
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1.5;
+}
+.pad-live {
+  stroke: var(--accent);
+}
+.chip {
+  fill: var(--surface-2);
+  stroke: rgba(var(--accent-rgb), 0.6);
+  stroke-width: 1.5;
+}
+.chip-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.dot {
+  fill: rgba(255, 255, 255, 0.15);
+}
+.dot-1 {
+  fill: var(--accent);
+}
+.line-no {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  fill: var(--text-dim);
+}
+.code.c1 {
+  fill: var(--accent);
+  opacity: 0.85;
+}
+.code.c2 {
+  fill: var(--accent-2);
+  opacity: 0.85;
+}
+.code.c3 {
+  fill: rgba(255, 255, 255, 0.28);
+}
+.code.c4 {
+  fill: rgba(255, 255, 255, 0.12);
+}
+.code-scan {
+  fill: rgba(var(--accent-rgb), 0.07);
+  animation: code-scan 3.2s var(--ease) infinite;
+  animation-play-state: paused;
+}
+@keyframes code-scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(170px);
+  }
+}
+/* Animate covers only while the card is hovered */
+.project-card:hover .trace-live,
+.project-card:hover .code-scan {
+  animation-play-state: running;
+}
+.project-card:hover .cover img,
+.project-card:hover .cover svg {
+  transform: scale(1.04);
+}

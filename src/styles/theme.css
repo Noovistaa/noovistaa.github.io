@@ -1,0 +1,45 @@
+/* ─────────────────────────────────────────────────────────────
+   THEME — change the look of the whole site from here.
+   Colors, fonts, corner radius and page width all live below.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg: #07080b;
+  --bg-elev: #0c0e13;
+  --surface: #11141b;
+  --surface-2: #171b24;
+
+  /* Lines & borders */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --text: #eef0f4;
+  --text-muted: #9098a8;
+  --text-dim: #5d6576;
+
+  /* Brand colors.
+     If you change --accent, also update --accent-rgb (same color as "R, G, B"),
+     it powers the glows and the animated circuit background. */
+  --accent: #5cf2c4;
+  --accent-rgb: 92, 242, 196;
+  --accent-2: #6c8cff;
+  --accent-2-rgb: 108, 140, 255;
+  --on-accent: #04110c; /* text color on top of accent buttons */
+
+  /* Fonts (loaded in index.html from Google Fonts) */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Shape & layout */
+  --radius: 18px;
+  --radius-sm: 10px;
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-space: clamp(88px, 12vw, 160px);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
