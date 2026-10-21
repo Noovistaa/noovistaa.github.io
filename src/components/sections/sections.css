@@ -150,10 +150,15 @@
 .partner {
   display: flex;
   align-items: center;
-  height: 48px;
+  height: 56px;
+}
+.partner-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
 }
 .partner-logo {
-  height: 30px;
+  height: 44px;
   width: auto;
   opacity: 0.6;
   filter: grayscale(1);

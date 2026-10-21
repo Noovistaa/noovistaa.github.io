@@ -5,11 +5,12 @@
 //  logo is optional: put an SVG/PNG in public/images/partners/ and write
 //  'images/partners/nrtc.png'. White or single-color logos look best.
 //  With no logo, the name is shown as a clean wordmark.
+//  showName: true also writes the name next to the logo (good for emblem-style logos).
 //  The strip scrolls endlessly; a short list is repeated to fill it.
 // ─────────────────────────────────────────────────────────────
 
 export const partners = [
-  { name: 'NRTC', logo: '' },
+  { name: 'NRTC', logo: 'images/partners/nrtc.png', showName: true },
 ]
 
 // Second strip: the fields Noovistaa works in. Keep these broad (fields, not tools).
