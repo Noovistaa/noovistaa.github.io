@@ -1,13 +1,21 @@
 import { useMemo } from 'react'
 import { asset, seededRandom } from '../../utils/asset'
 
-// Shows the project's image, or a generated illustration if it has none:
-// circuit-board art for hardware projects, code art for software projects.
+// Shows the project's image, or its animation (e.g. animation: 'drone'), or a generated
+// illustration: circuit-board art for hardware projects, code art for software projects.
 export default function ProjectCover({ project }) {
   if (project.image) {
     return (
       <div className="cover">
         <img src={asset(project.image)} alt={project.title} loading="lazy" />
+      </div>
+    )
+  }
+  const Animated = animatedCovers[project.animation]
+  if (Animated) {
+    return (
+      <div className="cover cover-generated">
+        <Animated />
       </div>
     )
   }
@@ -106,4 +114,71 @@ function CodeArt({ seed }) {
       <rect x="0" y="44" width="400" height="16" className="code-scan" />
     </svg>
   )
+}
+
+/* ── Drone holding position: gusts push it off target, it corrects and locks back on ── */
+function DroneHoldArt() {
+  const grid = []
+  for (let x = 0; x <= 400; x += 25) grid.push(`M${x} 0 V250`)
+  for (let y = 0; y <= 250; y += 25) grid.push(`M0 ${y} H400`)
+  const gusts = [
+    { y: 92, len: 70, d: 0 },
+    { y: 118, len: 110, d: 0.15 },
+    { y: 146, len: 60, d: 0.3 },
+    { y: 166, len: 90, d: 0.1 },
+    { y: 104, len: 80, d: 4.4 },
+    { y: 134, len: 120, d: 4.55 },
+    { y: 158, len: 70, d: 4.7 },
+  ]
+  const rotors = [
+    [-22, -22],
+    [22, -22],
+    [-22, 22],
+    [22, 22],
+  ]
+  return (
+    <svg
+      viewBox="0 0 400 250"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      className="drone-art"
+      style={{ '--gx': '50%', '--gy': '50%' }}
+    >
+      <path d={grid.join(' ')} className="da-grid" />
+      {gusts.map((g) => (
+        <path key={`${g.y}-${g.d}`} d={`M-120 ${g.y} h${g.len}`} className="da-wind" style={{ '--d': `${g.d}s` }} />
+      ))}
+      <circle cx="200" cy="125" r="46" className="da-ring da-ring-dash" />
+      <circle cx="200" cy="125" r="28" className="da-ring" />
+      <path d="M200 66 V90 M200 160 V184 M141 125 H165 M235 125 H259" className="da-cross" />
+      <circle cx="200" cy="125" r="4" className="da-core" />
+      <g transform="translate(200 125)">
+        <g className="da-drone">
+          <path d="M-22 -22 L22 22 M22 -22 L-22 22" className="da-arm" />
+          {rotors.map(([x, y], i) => (
+            <g key={i} transform={`translate(${x} ${y})`}>
+              <circle r="12" className="da-rotor" />
+              <path d="M-10 0 H10" className="da-prop" style={{ '--d': `${i * 0.05}s` }} />
+            </g>
+          ))}
+          <rect x="-11" y="-11" width="22" height="22" rx="5" className="da-body" />
+          <circle cx="0" cy="-4" r="2.4" className="da-led" />
+        </g>
+      </g>
+      <text x="24" y="58" className="da-label">POSITION HOLD</text>
+      <text x="24" y="184" className="da-label">ROLL</text>
+      <rect x="64" y="178" width="60" height="5" rx="2.5" className="da-track" />
+      <rect x="64" y="178" width="60" height="5" rx="2.5" className="da-bar" />
+      <text x="24" y="200" className="da-label">PITCH</text>
+      <rect x="64" y="194" width="60" height="5" rx="2.5" className="da-track" />
+      <rect x="64" y="194" width="60" height="5" rx="2.5" className="da-bar" style={{ '--d': '0.25s' }} />
+      <text x="376" y="200" textAnchor="end" className="da-label da-locked">
+        ● LOCKED
+      </text>
+    </svg>
+  )
+}
+
+const animatedCovers = {
+  drone: DroneHoldArt,
 }

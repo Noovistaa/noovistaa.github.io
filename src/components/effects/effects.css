@@ -261,3 +261,184 @@
 .project-card:hover .cover svg {
   transform: scale(1.04);
 }
+
+/* ── Animated project cover: drone holding position ── */
+.drone-art .da-grid {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-width: 1;
+}
+.drone-art .da-wind {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: da-wind 8s linear infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes da-wind {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  16% {
+    transform: translateX(560px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(560px);
+    opacity: 0;
+  }
+}
+.drone-art .da-ring {
+  fill: none;
+  stroke: rgba(var(--accent-rgb), 0.35);
+  stroke-width: 1.5;
+}
+.drone-art .da-ring-dash {
+  stroke-dasharray: 4 8;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: da-rotate 24s linear infinite;
+}
+@keyframes da-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.drone-art .da-cross {
+  fill: none;
+  stroke: rgba(var(--accent-rgb), 0.6);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.drone-art .da-core {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(var(--accent-rgb), 0.9));
+}
+.drone-art .da-drone {
+  animation: da-hold 8s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+@keyframes da-hold {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(17px, -5px);
+  }
+  20% {
+    transform: translate(-5px, 2px);
+  }
+  28% {
+    transform: translate(2px, -1px);
+  }
+  34%,
+  55% {
+    transform: translate(0, 0);
+  }
+  65% {
+    transform: translate(16px, 6px);
+  }
+  75% {
+    transform: translate(-4px, -2px);
+  }
+  82% {
+    transform: translate(1px, 0);
+  }
+  88%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.drone-art .da-arm {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+.drone-art .da-rotor {
+  fill: rgba(var(--accent-rgb), 0.07);
+  stroke: rgba(var(--accent-rgb), 0.6);
+  stroke-width: 1.5;
+}
+.drone-art .da-prop {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: da-rotate 0.2s linear infinite;
+  animation-delay: var(--d, 0s);
+}
+.drone-art .da-body {
+  fill: var(--surface-2);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+.drone-art .da-led {
+  fill: var(--accent);
+  animation: da-blink 0.9s steps(1) infinite;
+}
+@keyframes da-blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+.drone-art .da-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  fill: var(--text-muted);
+}
+.drone-art .da-track {
+  fill: rgba(255, 255, 255, 0.08);
+}
+.drone-art .da-bar {
+  fill: var(--accent);
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(0.15);
+  animation: da-bar 8s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes da-bar {
+  0%,
+  34%,
+  55%,
+  88%,
+  100% {
+    transform: scaleX(0.15);
+  }
+  10%,
+  65% {
+    transform: scaleX(1);
+  }
+  20%,
+  75% {
+    transform: scaleX(0.45);
+  }
+}
+.drone-art .da-locked {
+  fill: var(--accent);
+  animation: da-locked 8s linear infinite;
+}
+@keyframes da-locked {
+  0%,
+  36%,
+  55%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+  4%,
+  32%,
+  59%,
+  86% {
+    opacity: 0.2;
+  }
+}
