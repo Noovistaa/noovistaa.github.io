@@ -35,7 +35,10 @@ export default function Footer() {
                     <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>
                   </li>
                 )}
-                <li className="muted">{site.location}</li>
+                <li className="muted footer-address">
+                  {site.address && <span>{site.address}</span>}
+                  <span>{site.location}</span>
+                </li>
               </ul>
             </div>
             <div>

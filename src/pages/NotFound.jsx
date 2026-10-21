@@ -14,7 +14,7 @@ export default function NotFound() {
           <h1 className="not-found-title">
             <ScrambleText words={words} interval={1800} className="accent-text" />
           </h1>
-          <p className="lead">This page doesn’t exist — or it was moved.</p>
+          <p className="lead">This page doesn’t exist, or it was moved.</p>
           <Link to="/" className="btn btn-primary">
             Back to home <ArrowRight />
           </Link>

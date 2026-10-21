@@ -1,6 +1,9 @@
 // Icons available to the content files (services.js, about.js).
 // To add one: find it on https://lucide.dev/icons, add it to the import and to the list below.
 import {
+  ScanEye,
+  Drone,
+  AudioWaveform,
   BrainCircuit,
   CircuitBoard,
   CodeXml,
@@ -27,6 +30,9 @@ import {
 } from 'lucide-react'
 
 const icons = {
+  ScanEye,
+  Drone,
+  AudioWaveform,
   BrainCircuit,
   CircuitBoard,
   CodeXml,

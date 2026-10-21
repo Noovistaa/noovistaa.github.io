@@ -2,7 +2,8 @@
 export function asset(path) {
   if (!path) return ''
   if (/^https?:\/\//.test(path)) return path
-  return import.meta.env.BASE_URL + path.replace(/^\//, '')
+  // accepts 'images/x.png', '/images/x.png' or './public/images/x.png'
+  return import.meta.env.BASE_URL + path.replace(/^\.?\/?(public\/)?/, '')
 }
 
 // Small deterministic random generator, so generated artwork stays the same on every visit.

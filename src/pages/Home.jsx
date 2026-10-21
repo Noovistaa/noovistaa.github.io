@@ -1,4 +1,4 @@
-// The home page. Each line below is one section — reorder or delete lines to change the page.
+// The home page. Each line below is one section. Reorder or delete lines to change the page.
 // The text for each section lives in src/content/home.js.
 import Page from '../components/layout/Page'
 import Hero from '../components/sections/Hero'

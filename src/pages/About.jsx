@@ -1,5 +1,5 @@
 // The About page. Text lives in src/content/about.js.
-import { aboutHeader, story, team, values } from '../content/about'
+import { aboutHeader, story, values } from '../content/about'
 import Page from '../components/layout/Page'
 import PageHeader from '../components/sections/PageHeader'
 import Mission from '../components/sections/Mission'
@@ -7,8 +7,6 @@ import Process from '../components/sections/Process'
 import CTA from '../components/sections/CTA'
 import Reveal from '../components/effects/Reveal'
 import SpotlightGroup from '../components/effects/SpotlightGroup'
-import TiltCard from '../components/effects/TiltCard'
-import Avatar from '../components/ui/Avatar'
 import Icon from '../components/ui/Icon'
 
 export default function About() {
@@ -57,28 +55,6 @@ export default function About() {
       </section>
 
       <Process />
-
-      <section className="section">
-        <div className="container">
-          <Reveal className="section-head">
-            <div>
-              <span className="eyebrow">Team</span>
-              <h2>The people behind Novista</h2>
-            </div>
-          </Reveal>
-          <div className="team-grid">
-            {team.map((m, i) => (
-              <Reveal key={m.name + i} delay={i * 0.08}>
-                <TiltCard className="team-card" max={6}>
-                  <Avatar name={m.name} photo={m.photo} size={96} />
-                  <h3>{m.name}</h3>
-                  <p className="muted">{m.role}</p>
-                </TiltCard>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <CTA />
     </Page>

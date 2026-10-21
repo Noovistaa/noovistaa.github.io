@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 
 const SPACING = 30
 const MOUSE_RADIUS = 170
-const TRAIL = 16
+const TRAIL = 26
 
 export default function CircuitGrid() {
   const canvasRef = useRef(null)
@@ -38,7 +38,7 @@ export default function CircuitGrid() {
         dx: horizontal ? dir : 0,
         dy: horizontal ? 0 : dir,
         t: 0,
-        speed: 0.05 + Math.random() * 0.07,
+        speed: 0.03 + Math.random() * 0.04, // grid cells per frame: lower = slower
         life: 12 + randInt(30),
         trail: [],
       }

@@ -178,38 +178,34 @@
 .partner:hover .partner-word {
   color: var(--text);
 }
-.partner-shape {
-  width: 18px;
-  height: 18px;
-  background: currentColor;
-}
-.partner-shape.circle {
-  border-radius: 50%;
-}
-.partner-shape.square {
-  border-radius: 4px;
-}
-.partner-shape.diamond {
-  transform: rotate(45deg) scale(0.85);
-  border-radius: 3px;
-}
-.partner-shape.ring {
-  border-radius: 50%;
-  background: none;
-  border: 4px solid currentColor;
-}
 .tech-marquee {
-  --gap: 12px;
-  margin-top: 28px;
+  --gap: 14px;
+  margin-top: 32px;
 }
 .tech-chip {
-  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-display);
+  font-size: 1rem;
   color: var(--text-muted);
   white-space: nowrap;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.tech-chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.tech-chip:hover {
+  color: var(--text);
+  border-color: rgba(var(--accent-rgb), 0.5);
 }
 
 /* ── Intro + services ───────────────────────────── */
@@ -226,27 +222,91 @@
   align-items: flex-start;
   gap: 28px;
 }
+.intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+}
+.subsection-label {
+  padding-top: 20px;
+  margin-bottom: 24px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.subsection-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.subsection-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  transition: color 0.3s var(--ease);
+}
+.subsection-link:hover {
+  color: var(--accent);
+}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: dense;
   gap: 16px;
+}
+.services-grid > div {
+  height: 100%;
 }
 .service-card {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  height: 100%;
   padding: 28px;
-  min-height: 280px;
 }
-.service-card.is-wide {
-  grid-column: span 2;
+.service-card-list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+}
+.service-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+.service-card-list li::before {
+  content: '';
+  width: 10px;
+  height: 1px;
+  background: var(--accent);
+}
+.service-card-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s var(--ease), gap 0.3s var(--ease);
+}
+.service-card:hover .service-card-more {
+  color: var(--accent);
+  gap: 12px;
 }
 .service-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: auto;
   padding-bottom: 24px;
 }
 .service-icon {
@@ -338,6 +398,12 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+}
+.projects-grid.is-single {
+  grid-template-columns: 1fr;
+}
+.projects-grid.is-single .cover {
+  aspect-ratio: 21 / 9;
 }
 .projects-grid.featured .is-large {
   grid-column: 1 / -1;
@@ -683,7 +749,7 @@
     grid-template-columns: 1fr;
   }
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
     .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -705,13 +771,8 @@
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  .service-card.is-wide {
-    grid-column: auto;
-  }
-  .service-card {
-    min-height: 0;
-  }
-  .projects-grid.featured .is-large .cover {
+  .projects-grid.featured .is-large .cover,
+  .projects-grid.is-single .cover {
     aspect-ratio: 16 / 10;
   }
   .stats-grid {

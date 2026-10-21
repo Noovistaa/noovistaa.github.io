@@ -1,5 +1,5 @@
-// The Projects page. Projects are listed in src/content/projects.js —
-// filter tabs are created automatically from each project's "category".
+// The Projects page. Projects are listed in src/content/projects.js.
+// Filter tabs are created automatically from each project's "category" (shown once there are 2+ categories).
 import { useCallback, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { AnimatePresence, LayoutGroup, motion } from 'motion/react'
@@ -26,21 +26,34 @@ export default function Projects() {
       <section className="section section-flush-top">
         <div className="container">
           <LayoutGroup>
-            <div className="filters" role="group" aria-label="Filter projects">
-              {categories.map((c) => {
-                const count = c === 'All' ? projects.length : projects.filter((p) => p.category === c).length
-                const active = filter === c
-                return (
-                  <button key={c} className={`filter ${active ? 'is-active' : ''}`} onClick={() => setFilter(c)} aria-pressed={active}>
-                    {active && <motion.span layoutId="filter-pill" className="filter-pill" transition={{ type: 'spring', stiffness: 400, damping: 34 }} />}
-                    <span className="filter-label">{c}</span>
-                    <span className="filter-count">{count}</span>
-                  </button>
-                )
-              })}
-            </div>
+            {categories.length > 2 && (
+              <div className="filters" role="group" aria-label="Filter projects">
+                {categories.map((c) => {
+                  const count = c === 'All' ? projects.length : projects.filter((p) => p.category === c).length
+                  const active = filter === c
+                  return (
+                    <button
+                      key={c}
+                      className={`filter ${active ? 'is-active' : ''}`}
+                      onClick={() => setFilter(c)}
+                      aria-pressed={active}
+                    >
+                      {active && (
+                        <motion.span
+                          layoutId="filter-pill"
+                          className="filter-pill"
+                          transition={{ type: 'spring', stiffness: 400, damping: 34 }}
+                        />
+                      )}
+                      <span className="filter-label">{c}</span>
+                      <span className="filter-count">{count}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
 
-            <motion.div layout className="projects-grid">
+            <motion.div layout className={`projects-grid ${visible.length === 1 ? 'is-single' : ''}`}>
               <AnimatePresence mode="popLayout">
                 {visible.map((p) => (
                   <motion.div

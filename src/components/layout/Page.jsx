@@ -6,7 +6,7 @@ import { site } from '../../content/site'
 export default function Page({ title, children }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
-    document.title = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`
+    document.title = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`
   }, [title])
 
   return (

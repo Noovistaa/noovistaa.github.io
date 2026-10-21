@@ -10,46 +10,6 @@
   mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, #000 35%, transparent 85%);
 }
 
-/* ── Custom cursor ──────────────────────────────── */
-.cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1px solid rgba(var(--accent-rgb), 0.7);
-  pointer-events: none;
-  opacity: 0;
-  transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s var(--ease),
-    border-color 0.3s var(--ease), opacity 0.3s var(--ease);
-}
-.cursor-ring.is-visible {
-  opacity: 1;
-}
-.cursor-ring.is-hover {
-  width: 58px;
-  height: 58px;
-  background: rgba(var(--accent-rgb), 0.08);
-  border-color: rgba(var(--accent-rgb), 0.35);
-}
-.cursor-ring.is-down {
-  width: 20px;
-  height: 20px;
-}
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 720px;
-  height: 720px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.06), transparent 60%);
-}
-
 /* ── Scramble text ──────────────────────────────── */
 .scramble {
   white-space: nowrap;
@@ -168,6 +128,10 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+}
+.logo-img {
+  height: 30px;
+  width: auto;
 }
 .logo-word {
   font-family: var(--font-display);

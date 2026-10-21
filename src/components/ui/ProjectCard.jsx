@@ -6,7 +6,7 @@ import ProjectCover from './ProjectCover'
 // Clicking a card opens its details on the Projects page (/projects?project=slug).
 export default function ProjectCard({ project }) {
   return (
-    <Link to={`/projects?project=${project.slug}`} className="project-card" aria-label={`${project.title} — view details`}>
+    <Link to={`/projects?project=${project.slug}`} className="project-card" aria-label={`${project.title}: view details`}>
       <TiltCard className="project-card-inner" max={5}>
         <ProjectCover project={project} />
         <div className="project-body">

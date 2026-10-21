@@ -1,6 +1,7 @@
 import { site } from '../../content/site'
+import { asset } from '../../utils/asset'
 
-// The Novista mark: an "N" drawn like a circuit trace with two solder pads.
+// The Noovistaa mark: an "N" drawn like a circuit trace with two solder pads.
 export function LogoMark({ size = 28 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -18,11 +19,13 @@ export function LogoMark({ size = 28 }) {
   )
 }
 
+// Uses your logo file if one is set in src/content/site.js, otherwise the built-in mark.
 export default function Logo() {
+  const showName = !(site.logo && site.logoIncludesName)
   return (
     <span className="logo">
-      <LogoMark />
-      <span className="logo-word">{site.name}</span>
+      {site.logo ? <img src={asset(site.logo)} alt={showName ? '' : site.name} className="logo-img" /> : <LogoMark />}
+      {showName && <span className="logo-word">{site.name}</span>}
     </span>
   )
 }

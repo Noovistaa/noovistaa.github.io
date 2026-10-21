@@ -42,7 +42,7 @@ export default function Contact() {
       if (payload.types) lines.push(`Project type: ${payload.types}`)
       if (payload.budget) lines.push(`Budget: ${payload.budget}`)
       lines.push('', payload.message)
-      const subject = encodeURIComponent(`Project inquiry — ${payload.name}`)
+      const subject = encodeURIComponent(`Project inquiry from ${payload.name}`)
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${encodeURIComponent(lines.join('\n'))}`
       setStatus('sent')
       return
@@ -181,8 +181,9 @@ export default function Contact() {
                 <MapPin size={18} />
               </span>
               <div>
-                <span className="info-label">Location</span>
-                <span className="info-value">{site.location}</span>
+                <span className="info-label">Office</span>
+                {site.address && <span className="info-value">{site.address}</span>}
+                <span className={site.address ? 'info-value muted' : 'info-value'}>{site.location}</span>
               </div>
             </Reveal>
             <Reveal delay={0.22} className="info-card">

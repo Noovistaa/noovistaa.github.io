@@ -1,6 +1,6 @@
-# Novista website
+# Noovistaa website
 
-The website for Novista, a software and hardware engineering studio. Built with React, Vite and Motion, and published automatically to GitHub Pages.
+The website for Noovistaa, a software, hardware and AI engineering studio. Built with React, Vite and Motion, and published automatically to GitHub Pages.
 
 ## Run it on your computer
 
@@ -18,12 +18,13 @@ The page reloads by itself every time you save a file.
 | I want to change…                               | Edit this file                            |
 | ----------------------------------------------- | ----------------------------------------- |
 | Company name, email, phone, location, socials   | `src/content/site.js`                     |
-| Home page text (hero, mission, stats, CTA)      | `src/content/home.js`                     |
-| Service cards on the home page                  | `src/content/services.js`                 |
+| Home page text (hero, about us, mission, stats, CTA) | `src/content/home.js`              |
+| Services page (and the Home "What we do" cards) | `src/content/services.js`                 |
 | Projects (add / remove / edit)                  | `src/content/projects.js`                 |
 | Testimonials                                    | `src/content/testimonials.js`             |
-| Partner logos and technology list               | `src/content/partners.js`                 |
-| About page (story, values, process, team)       | `src/content/about.js`                    |
+| Partner logos and the fields-we-work-in strip   | `src/content/partners.js`                 |
+| About page (story, values, process)             | `src/content/about.js`                    |
+| Team page (people, photos, bios, hiring card)   | `src/content/team.js`                     |
 | Contact page (form options, FAQ)                | `src/content/contact.js`                  |
 | Colors, fonts, roundness                        | `src/styles/theme.css`                    |
 | Order of sections on the home page              | `src/pages/Home.jsx`                      |
@@ -35,6 +36,15 @@ The page reloads by itself every time you save a file.
 3. Optional: add a picture to `public/images/projects/` and set `image: 'images/projects/your-picture.jpg'`.
    With no picture, the site draws circuit-board or code artwork for it automatically.
 4. Set `featured: true` to also show it on the home page (the first 3 featured ones are shown).
+
+### Add your company logo
+
+1. Put your logo file in `public/images/` (SVG is best; a PNG with a transparent background also works).
+   Use a white or colored version, since the site has a dark background.
+2. In `src/content/site.js`, set `logo: 'images/your-logo.svg'`.
+3. If the logo already includes the word "Noovistaa", also set `logoIncludesName: true`.
+4. The browser-tab icon is `public/favicon.png` (64×64) and the phone home-screen icon is
+   `public/apple-touch-icon.png` (180×180). Replace them with same-named files to change them.
 
 ### Add a partner logo
 
@@ -64,7 +74,7 @@ git push
 
 Progress is visible in the repository's **Actions** tab.
 
-### Use your own domain (e.g. novista.com)
+### Use your own domain (e.g. noovistaa.com)
 
 1. In the repository, go to **Settings → Pages → Custom domain** and enter your domain.
 2. At your domain registrar, add the DNS records GitHub shows you.
@@ -77,7 +87,7 @@ Progress is visible in the repository's **Actions** tab.
 - [ ] Real testimonials (with the client's permission) in `testimonials.js`
 - [ ] Real partner names / logos in `partners.js`
 - [ ] Replace the placeholder projects and check the details of the real ones in `projects.js`
-- [ ] Team members and photos in `about.js`
+- [ ] Team members, photos and bios in `team.js`
 - [ ] Formspree URL in `site.js` so the contact form delivers to your inbox
 
 ## Folder map
@@ -85,7 +95,7 @@ Progress is visible in the repository's **Actions** tab.
 ```
 src/
 ├── content/        ← all the words and lists (edit these)
-├── pages/          ← one file per page: Home, About, Projects, Contact
+├── pages/          ← one file per page: Home, About, Services, Team, Projects, Contact
 ├── components/
 │   ├── sections/   ← building blocks of pages (Hero, Mission, Testimonials…)
 │   ├── effects/    ← animations (circuit background, cursor, text scramble…)

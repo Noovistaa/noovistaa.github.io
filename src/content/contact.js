@@ -10,15 +10,16 @@ export const contactHeader = {
 }
 
 // The selectable chips in the form.
-export const projectTypes = ['Hardware / PCB', 'Embedded / Firmware', 'Software / Web', 'AI / Edge', 'Not sure yet']
+export const projectTypes = ['AI / Machine learning', 'Software / Web / Mobile', 'Hardware / PCB', 'Embedded / IoT', 'Not sure yet']
 
-export const budgets = ['Under $10k', '$10k – $25k', '$25k – $50k', '$50k+', 'Let’s discuss']
+// Budget options (Pakistani rupees).
+export const budgets = ['PKR 10 – 25 Lac', 'PKR 25 – 50 Lac', 'PKR 50 Lac+', 'Let’s discuss']
 
 export const faq = [
   {
     question: 'What kind of projects do you take on?',
     answer:
-      'Anything that sits between hardware and software: connected devices, embedded systems, custom electronics, and the apps and dashboards around them. We also take pure software or pure hardware work.',
+      'Software, hardware and AI projects, and especially products that need all three: AI-powered apps, connected devices, embedded systems and custom electronics. We also take pure software, hardware or AI work.',
   },
   {
     question: 'Do I own the code and designs?',

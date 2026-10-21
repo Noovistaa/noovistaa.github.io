@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { asset, seededRandom } from '../../utils/asset'
 
-// Shows the project's image, or — if it has none — a generated illustration:
+// Shows the project's image, or a generated illustration if it has none:
 // circuit-board art for hardware projects, code art for software projects.
 export default function ProjectCover({ project }) {
   if (project.image) {
